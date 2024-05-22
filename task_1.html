@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №1</title>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 5. Дано список URL адрес. Підрахувати кількість адрес, що
+        відносяться до кожного із доменів (edu, com, org,...).
+      </h3>
+    </header>
+    <main></main>
+    <script>
+      const urls = [
+        "https://www.sparkleberry.gov",
+        "https://www.lunarfrosting.org",
+        "https://www.velvetpenguin.com",
+        "https://www.auroradreams.net",
+        "https://www.citruswhale.edu",
+        "https://www.octopusgarden.biz",
+        "https://www.crystalvalleyfarmersmarket.com",
+        "https://www.silversunriseconsulting.org",
+        "https://www.secretgardenretreat.com",
+        "https://www.goldenpineapplefoundation.net",
+      ];
+
+      let map = new Map();
+      for (const url of urls) {
+        let key = url.match(/\.\w{3}\b/);
+        let count = map.get(key[0]) ?? 0;
+        map.set(key[0], ++count);
+      }
+      map.forEach((count, url) => {
+        document.write(`${url} - ${count} <br>`);
+      });
+    </script>
+  </body>
+</html>

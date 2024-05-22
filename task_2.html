@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .cnt {
+        font-size: 24px;
+      }
+      label {
+        display: flex;
+        margin-bottom: 5px;
+      }
+    </style>
+    <title>Задача №2</title>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 6. Дано масив книг (назва, рік видання, автор, ціна). Підрахувати
+        загальну вартість книг для кожного із авторів.
+      </h3>
+    </header>
+    <script>
+      let books = [
+        {
+          title: "Служниця",
+          year: 2010,
+          author: "Маргарет Етвуд",
+          price: 500,
+        },
+        {
+          title: "Норвезький ліс",
+          year: 2020,
+          author: "Харукі Муракамі",
+          price: 500,
+        },
+        {
+          title: "Мобі Дік",
+          year: 2030,
+          author: "Херман Мелвілл",
+          price: 1500,
+        },
+        {
+          title: "Мишечка",
+          year: 2030,
+          author: "Ліонел Шрайвер",
+          price: 1500,
+        },
+        {
+          title: "Будь-ласка, прости мене",
+          year: 2030,
+          author: "Ліонел Шрайвер",
+          price: 1500,
+        },
+        {
+          title: "Мандарини",
+          year: 2030,
+          author: "Ліонел Шрайвер",
+          price: 1500,
+        },
+        {
+          title: "Старий і море",
+          year: 2030,
+          author: "Ернест Хемінгуей",
+          price: 1500,
+        },
+        {
+          title: "Прощай, зброє",
+          year: 2030,
+          author: "Ернест Хемінгуей",
+          price: 1500,
+        },
+        {
+          title: "По ком тихо віє вітер",
+          year: 2030,
+          author: "Ернест Хемінгуей",
+          price: 1500,
+        },
+      ];
+      let map = new Map();
+      for (const book of books) {
+        let totalPrice = map.get(book.author) ?? 0;
+        map.set(book.author, (totalPrice += book.price));
+      }
+      map.forEach((totalPrice, author) => {
+        document.write(`${author} - ${totalPrice}₴<br>`);
+      });
+    </script>
+  </body>
+</html>

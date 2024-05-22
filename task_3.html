@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №3</title>
+    <style>
+      div {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного
+        відвідувача зберігається логін). Підрахувати для кожного клієнта
+        кількість відвідувань.
+      </h3>
+    </header>
+    <script>
+      let siteData = [
+        "sheol98",
+        "mag17",
+        "varan11",
+        "sheol98",
+        "petro1",
+        "sheol",
+        "mag17",
+        "semen23",
+      ];
+      let map = new Map();
+      for (const user of siteData) {
+        let count = map.get(user) ?? 0;
+        map.set(user, ++count);
+      }
+      map.forEach((value, key) => {
+        document.write(`${key} - ${value}<br>`);
+      });
+    </script>
+  </body>
+</html>

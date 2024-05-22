@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №6</title>
+  </head>
+  <body>
+    <h3>
+      Задача 12. Зберігати у пам’яті список справ, які користувачу треба
+      виконати (зберігати у localStorage). Періодично випадковим чином вибирати
+      якусь з справ і виводити користувачу (з використанням confirm). Якщо
+      користувач натискає на «Ок», то видаляти цю задачу.
+    </h3>
+    <script>
+      const tasks = [
+        "Купити продукти",
+        "Написати звіт",
+        "Зробити домашнє завдання",
+        "Прочитати книгу",
+        "Прибрати в квартирі",
+      ];
+      class TasksManager {
+        constructor(tasks) {
+          this.tasks = tasks;
+          this.setTask();
+          this.setInterval();
+        }
+        setTask() {
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
+        }
+        getRandomTask() {
+          let tasksInStorage = JSON.parse(localStorage.getItem("tasks"));
+
+          if (tasksInStorage.length > 0) {
+            let randomTask = Math.floor(Math.random() * tasksInStorage.length);
+            if (confirm(this.tasks[randomTask])) {
+              this.tasks.splice(randomTask, 1);
+              this.setTask();
+            }
+          } else clearInterval(this.interval);
+        }
+        setInterval() {
+          this.interval = setInterval(this.getRandomTask.bind(this), 3000);
+        }
+      }
+
+      let tasksManager = new TasksManager(tasks);
+    </script>
+  </body>
+</html>

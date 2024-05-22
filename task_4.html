@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №4</title>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати
+        кількість різних факультетів, та кількість студентів кожного з курсів.
+      </h3>
+    </header>
+    <main>
+      <div class="cnt">
+        <ul></ul>
+      </div>
+    </main>
+    <script>
+      const students = [
+        { name: "Іванов Іван Іванович", course: 3, faculty: "Інформатика" },
+        { name: "Петров Петро Петрович", course: 2, faculty: "Математика" },
+        { name: "Сидорова Олена Василівна", course: 4, faculty: "Філологія" },
+        { name: "Коваленко Марина Олегівна", course: 1, faculty: "Економіка" },
+        { name: "Жуков Сергій Віталійович", course: 3, faculty: "Медицина" },
+        { name: "Мельник Олександр Петрович", course: 2, faculty: "Право" },
+        { name: "Ковальчук Тетяна Ігорівна", course: 4, faculty: "Фізика" },
+        { name: "Семенов Володимир Юрійович", course: 1, faculty: "Хімія" },
+        { name: "Павленко Олег Васильович", course: 3, faculty: "Історія" },
+        {
+          name: "Григорова Людмила Михайлівна",
+          course: 2,
+          faculty: "Біологія",
+        },
+        { name: "Шевчук Іван Іванович", course: 4, faculty: "Медицина" },
+        { name: "Бондаренко Ольга Василівна", course: 1, faculty: "Право" },
+        { name: "Дмитренко Андрій Олегович", course: 3, faculty: "Фізика" },
+      ];
+      let countDifferentFaculties = new Set(
+        students.map((student) => student.faculty)
+      ).size;
+
+      let countStudent = new Map();
+      for (const student of students) {
+        let count = countStudent.get(student.course) ?? 0;
+        countStudent.set(student.course, ++count);
+      }
+
+			document.write(`Кількість різних факультетів - ${countDifferentFaculties}`)
+
+      countStudent.forEach((count, course) => {
+        let liEl = document.createElement("li");
+        liEl.innerText = `${course} курс - ${count} людей`;
+        document.querySelector("ul").append(liEl);
+      });
+    </script>
+  </body>
+</html>

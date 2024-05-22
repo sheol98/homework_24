@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №6</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Задача 10 Дано два списки прізвищ студентів, що відвідують гуртки з
+        математики і історії. Підрахувати скільки студентів з гуртка з історії
+        також відвідують гурток з математики. Також підрахувати скільки всього
+        студентів відвідують хоча б один гурток.
+      </h1>
+    </header>
+    <script>
+      const visitsMath = [
+        "Шевченко",
+        "Іваненко",
+        "Петренко",
+        "Мельник",
+        "Ковальчук",
+        "Ткаченко",
+        "Бойко",
+        "Коваленко",
+        "Бондаренко",
+        "Гончарук",
+      ];
+      const visitsHistory = [
+        "Лисенко",
+        "Зайченко",
+        "Савченко",
+        "Романенко",
+        "Мороз",
+        "Демченко",
+        "Бойко",
+        "Коваленко",
+        "Бондаренко",
+        "Гончарук",
+      ];
+
+      let studentVisitsMath = new Map();
+      for (const student of visitsHistory) {
+        if (visitsMath.includes(student))
+          studentVisitsMath.set(student, "Також відвідує математику");
+      }
+      let countStudent = new Set();
+      for (const student of visitsMath) {
+        countStudent.add(student);
+      }
+      for (const student of visitsHistory) {
+        countStudent.add(student);
+      }
+      console.log("всього студентів відвідують хоча б один гурток.");
+      console.log(countStudent.size);
+      console.log(
+        "студенти з гуртка з історії також відвідують гурток з математики"
+      );
+      console.log(studentVisitsMath);
+    </script>
+  </body>
+</html>
